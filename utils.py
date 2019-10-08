@@ -14,10 +14,10 @@ def get_cookies():
 
     browser.find_element_by_xpath(
         '/html/body/div[7]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/form/div/div[1]/table/tbody/tr/td[1]/input').send_keys(
-        'survivingME')
+        '##your_account##')
     browser.find_element_by_xpath(
         '/html/body/div[7]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/form/div/div[2]/table/tbody/tr/td[1]/input').send_keys(
-        '123fyaiqyn!@3')
+        '##your_password##')
     print("wait to simulate human...")
     time.sleep(2)
     man_verify_code = input("input verify code：")
