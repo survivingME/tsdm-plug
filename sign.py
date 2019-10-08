@@ -12,7 +12,7 @@ while True:
     browser.get(sign_page)
     browser.delete_all_cookies()
     print("wait login page...")
-    time.sleep(4)
+    time.sleep(10)
     for cookie in tsdm_cookies:
         browser.add_cookie({
             "domain": ".tsdm.live",
@@ -27,13 +27,13 @@ while True:
     else:
         utils.get_cookies()
 browser.maximize_window()
-browser.find_element_by_xpath('/html/body/div[7]/div/div[3]/div/div[1]/div[1]/form/table[1]/tbody/tr/td/ul/li[1]') \
+browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div[1]/div[1]/form/table[1]/tbody/tr/td/ul/li[1]/center/a') \
     .click()
 pages = browser.window_handles
 browser.switch_to.window(pages[0])
-browser.find_element_by_xpath('/html/body/div[7]/div/div[3]/div/div[1]/div[1]/form/table[2]/tbody/tr[2]/td[1]/input') \
+browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div[1]/div[1]/form/table[2]/tbody/tr[2]/td[1]/input') \
     .send_keys(content)
-browser.find_element_by_xpath('/html/body/div[7]/div/div[3]/div/div[1]/div[1]/form/table[1]/tbody/tr/td/div/a[1]') \
+browser.find_element_by_xpath('/html/body/div[6]/div[2]/div/div[1]/div[1]/form/table[1]/tbody/tr/td/div/a[1]') \
     .click()
 print('no signature waiting...')
 time.sleep(4)

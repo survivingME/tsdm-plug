@@ -36,7 +36,7 @@ def get_cookies():
     cookies = {}
     for item in tsdm_cookies:
         cookies[item['name']] = item['value']
-    output_path = open('./tsdm_cookies.pickle', 'wb')
+    output_path = open('C://Users//1//Desktop//tsdm-plug-master//tsdm_cookies.pickle', 'wb')
     pickle.dump(cookies, output_path)
     output_path.close()
     return cookies
@@ -45,10 +45,11 @@ def get_cookies():
 def read_cookies():
     # if hava cookies file ,use it
     # if not , get_cookies()
-    if os.path.exists('./tsdm_cookies.pickle'):
+    if os.path.exists('C://Users//1//Desktop//tsdm-plug-master//tsdm_cookies.pickle'):
+        read_path = open('C://Users//1//Desktop//tsdm-plug-master//tsdm_cookies.pickle', 'rb')
         print("read cookies success...")
-        read_path = open('./tsdm_cookies.pickle','rb')
         tsdm_cookies = pickle.load(read_path)
+        read_path.close()
     else:
         tsdm_cookies = get_cookies()
     return tsdm_cookies

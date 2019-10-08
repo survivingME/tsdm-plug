@@ -1,4 +1,6 @@
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+
 import utils
 import time
 
@@ -11,7 +13,7 @@ while True:
     browser.get(work_page)
     browser.delete_all_cookies()
     print("wait login page...")
-    time.sleep(4)
+    time.sleep(10)
     for cookie in tsdm_cookies:
         browser.add_cookie({
             "domain": ".tsdm.live",
@@ -26,42 +28,45 @@ while True:
     else:
         utils.get_cookies()
 browser.maximize_window()
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[1]/a').click()
-pages = browser.window_handles
-print("wait to simulate human...")
-time.sleep(1)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[2]/a').click()
-pages = browser.window_handles
-print("wait to simulate human...")
-time.sleep(1)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[3]/a').click()
-pages = browser.window_handles
-print("wait to simulate human...")
-time.sleep(1)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[4]/a').click()
-pages = browser.window_handles
-print("wait to simulate human...")
-time.sleep(1)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[5]/a').click()
-pages = browser.window_handles
-print("wait to simulate human...")
-time.sleep(1)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath(
-    '/html/body/div[7]/div/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[6]/a').click()
-print("wait to simulate human...")
-time.sleep(2)
-browser.switch_to.window(pages[0])
-browser.find_element_by_xpath('/html/body/div[7]/div/div[3]/div[2]/div[2]/div[2]/ul/li[2]/form/div/a').click()
-print("no signature waiting...")
-time.sleep(2)
+try:
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[1]/a').click()
+    pages = browser.window_handles
+    print("wait to simulate human...")
+    time.sleep(1)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[2]/a').click()
+    pages = browser.window_handles
+    print("wait to simulate human...")
+    time.sleep(1)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[3]/a').click()
+    pages = browser.window_handles
+    print("wait to simulate human...")
+    time.sleep(1)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[4]/a').click()
+    pages = browser.window_handles
+    print("wait to simulate human...")
+    time.sleep(1)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[5]/a').click()
+    pages = browser.window_handles
+    print("wait to simulate human...")
+    time.sleep(1)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath(
+        '/html/body/div[6]/div[2]/div[1]/div/div[2]/table/tbody/tr[2]/td/center/div/div[6]/a').click()
+    print("wait to simulate human...")
+    time.sleep(2)
+    browser.switch_to.window(pages[0])
+    browser.find_element_by_xpath('/html/body/div[6]/div[2]/div[2]/div[2]/div[2]/ul/li[2]/form/div/a').click()
+    print("no signature waiting...")
+    time.sleep(2)
+except NoSuchElementException as e:
+    print(e)
 browser.quit()
